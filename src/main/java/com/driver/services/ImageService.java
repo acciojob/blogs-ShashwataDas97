@@ -16,13 +16,15 @@ public class ImageService {
     ImageRepository imageRepository2;
 
     public Image addImage(Integer blogId, String description, String dimensions){
-        //add an image to the blog
-        Blog blog = blogRepository2.findById(blogId).get();
+        // Add an image to the blog
+        Blog blog = blogRepository2.findById(blogId).orElse(null);
         Image image = new Image();
         image.setDescription(description);
         image.setDimensions(dimensions);
         image.setBlog(blog);
         imageRepository2.save(image);
+        blog.getImageList().add(image);
+        blogRepository2.save(blog);
         return image;
     }
 
@@ -31,16 +33,20 @@ public class ImageService {
     }
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
-        //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        String [] scrarray = screenDimensions.split("X");
-        Image image = imageRepository2.findById(id).get();
+        // Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
+        Image image = imageRepository2.findById(id).orElse(null);
         String imageDimensions = image.getDimensions();
-        String [] imgarray = imageDimensions.split("X");
-        int scrl = Integer.parseInt(scrarray[0]);
-        int scrb = Integer.parseInt(scrarray[1]);
-        int imgl = Integer.parseInt(imgarray[0]);
-        int imgb = Integer.parseInt(imgarray[1]);
-        int count = (scrl*scrb) / (imgl*imgb);
+        int imageIndexOfX = imageDimensions.indexOf('X');
+        String imageX = imageDimensions.substring(0,imageIndexOfX);
+        String imageY = imageDimensions.substring(imageIndexOfX+1);
+        int imageWidth = Integer.parseInt(imageX);
+        int imageHeight = Integer.parseInt(imageY);
+        int screenIndexOfX = screenDimensions.indexOf('X');
+        String screenX = screenDimensions.substring(0,screenIndexOfX);
+        String screenY = screenDimensions.substring(screenIndexOfX+1);
+        int screenWidth = Integer.parseInt(screenX);
+        int screenHeight = Integer.parseInt(screenY);
+        int count = (screenWidth/imageWidth) * (screenHeight/imageHeight);
         return count;
     }
 }

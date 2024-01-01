@@ -1,6 +1,7 @@
 package com.driver.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,20 +11,22 @@ public class Blog {
     private int id;
     private String title;
     private String content;
+    private Date pubDate;
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "blog")
-    private List<Image> images;
+    private List<Image> imageList;
 
     public Blog() {
     }
 
-    public Blog(int id, String title, String content, User user, List<Image> images) {
+    public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.pubDate = pubDate;
         this.user = user;
-        this.images = images;
+        this.imageList = imageList;
     }
 
     public int getId() {
@@ -50,6 +53,14 @@ public class Blog {
         this.content = content;
     }
 
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
+    }
+
     public User getUser() {
         return user;
     }
@@ -58,11 +69,11 @@ public class Blog {
         this.user = user;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<Image> getImageList() {
+        return imageList;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
     }
 }

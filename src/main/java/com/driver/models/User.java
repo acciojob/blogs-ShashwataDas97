@@ -8,23 +8,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String userName;
+    private String username;
     private String password;
-    private String firstName = "test";
-    private String lastName = "test";
+    private String firstName;
+    private String lastName;
     @OneToMany(mappedBy = "user")
-    private List<Blog> blogs;
+    private List<Blog> blogList;
 
     public User() {
     }
 
-    public User(int id, String userName, String password, String firstName, String lastName, List<Blog> blogs) {
+    public User(int id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blogs = blogs;
+        this.blogList = blogList;
     }
 
     public int getId() {
@@ -35,12 +35,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -67,11 +67,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public List<Blog> getBlogs() {
-        return blogs;
+    public List<Blog> getBlogList() {
+        return blogList;
     }
 
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
     }
 }

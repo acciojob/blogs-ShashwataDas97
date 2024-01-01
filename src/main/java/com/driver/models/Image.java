@@ -1,7 +1,6 @@
 package com.driver.models;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 public class Image {
