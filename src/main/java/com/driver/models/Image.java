@@ -13,7 +13,6 @@ public class Image{
     private String dimensions;
 
     @ManyToOne
-    @JoinColumn
     private Blog blog;
 
     public Image() {

@@ -18,7 +18,6 @@ public class Blog {
     private Date pubDate;
 
     @ManyToOne
-    @JoinColumn
     private User user;
 
     @OneToMany(mappedBy = "blog")
