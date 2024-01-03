@@ -13,7 +13,6 @@ public class Blog {
     private String content;
     private Date pubDate;
     @ManyToOne
-    @JoinColumn
     private User user;
     @OneToMany(mappedBy = "blog")
     private List < Image > imageList = new ArrayList < > ();
