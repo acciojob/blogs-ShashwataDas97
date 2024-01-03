@@ -1,6 +1,4 @@
 package com.driver.controller;
-import com.driver.models.Blog;
-import com.driver.models.Image;
 import com.driver.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +26,7 @@ public class ImageController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity < Void > deleteImage(@PathVariable int id) {
-        // delete image using deleteById
+        // Delete image using deleteById
         imageService.deleteImage(id);
         return new ResponseEntity < > (HttpStatus.OK);
     }
