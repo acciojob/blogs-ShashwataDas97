@@ -1,13 +1,10 @@
 package com.driver.services;
-
 import com.driver.models.*;
 import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Service
 public class UserService {
@@ -20,14 +17,12 @@ public class UserService {
         user.setPassword(password);
         user.setFirstName("test");
         user.setLastName("test");
-
-        return userRepository3.save(user);
-
+        userRepository3.save(user);
+        return user;
     }
 
     public void deleteUser(int userId) {
         userRepository3.deleteById(userId);
-
     }
 
     public User updateUser(Integer id, String password) {
