@@ -18,7 +18,7 @@ public  class User {
     private  String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user" ,cascade =CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Blog> blogList = new ArrayList<>();
 
     public User(int id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
