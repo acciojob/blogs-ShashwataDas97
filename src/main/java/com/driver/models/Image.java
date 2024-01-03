@@ -1,18 +1,15 @@
 package com.driver.models;
-
 import javax.persistence.*;
 
 @Entity
-public class Image{
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String description;
-
     private String dimensions;
-
     @ManyToOne
+    @JoinColumn
     private Blog blog;
 
     public Image() {
@@ -24,7 +21,6 @@ public class Image{
         this.dimensions = dimensions;
         this.blog = blog;
     }
-
 
     public int getId() {
         return id;
