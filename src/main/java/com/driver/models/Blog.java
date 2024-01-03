@@ -18,6 +18,7 @@ public class Blog {
     @OneToMany(mappedBy = "blog")
     private List<Image> imageList = new ArrayList<>();
 
+
     public Blog() {
     }
 
