@@ -3,7 +3,6 @@ package com.driver.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ImageInfo")
 public class Image{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
