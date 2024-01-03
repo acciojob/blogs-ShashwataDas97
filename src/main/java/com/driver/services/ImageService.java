@@ -19,7 +19,7 @@ public class ImageService {
         image.setDescription(description);
         image.setDimensions(dimensions);
         image.setBlog(blog);
-        // imageRepository2.save(image);
+        // imageRepository2.save(image); // Error happen for that line
         blog.getImageList().add(image);
         blogRepository2.save(blog);
         return image;
