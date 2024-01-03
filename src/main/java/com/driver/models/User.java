@@ -1,37 +1,30 @@
-package  com.driver.models;
-
-
-import org.springframework.boot.test.autoconfigure.data.cassandra.DataCassandraTest;
-
+package com.driver.models;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public  class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int id;
-
-    private  String username;
-    private  String password;
-    private  String firstName;
+    private int id;
+    private String username;
+    private String password;
+    private String firstName;
     private String lastName;
-
     @OneToMany(mappedBy = "user")
-    private List<Blog> blogList = new ArrayList<>();
+    private List < Blog > blogList = new ArrayList < > ();
 
-    public User(int id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
+    public User() {
+    }
+
+    public User(int id, String username, String password, String firstName, String lastName, List < Blog > blogList) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.blogList = blogList;
-    }
-
-    public User(){
-
     }
 
     public int getId() {
@@ -74,11 +67,11 @@ public  class User {
         this.lastName = lastName;
     }
 
-    public List<Blog> getBlogList() {
+    public List < Blog > getBlogList() {
         return blogList;
     }
 
-    public void setBlogList(List<Blog> blogList) {
+    public void setBlogList(List < Blog > blogList) {
         this.blogList = blogList;
     }
 }
